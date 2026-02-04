@@ -1,4 +1,4 @@
-# CLAUDE.md
+great# CLAUDE.md
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
@@ -7,6 +7,15 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 UIGen is an AI-powered React component generator with live preview capabilities. It allows users to describe components in natural language and see them rendered in real-time. The application uses a virtual file system (no files written to disk) and leverages Claude AI for component generation.
 
 **Tech Stack:** Next.js 15 (App Router), React 19, TypeScript, Tailwind CSS v4, Prisma (SQLite), Anthropic Claude AI, Vercel AI SDK
+
+## Important: Communication Style
+
+**The user is a PM with limited developer skills.** When performing tasks:
+- Explain what you're doing in simple, non-technical terms
+- Explain why each action is important
+- Avoid jargon where possible
+- When technical terms are necessary, explain them clearly
+- Break complex tasks into understandable steps
 
 ## Common Commands
 
@@ -35,6 +44,36 @@ npm run db:reset         # Reset database (force)
 ```bash
 npm run lint             # Run ESLint
 ```
+
+### Security & Maintenance
+```bash
+npm audit                # Audit for vulnerabilities
+npm audit fix            # Automatically fix vulnerabilities
+npm outdated             # Check for outdated dependencies
+npm update               # Update dependencies within semver ranges
+```
+
+## Project-Specific Tasks
+
+When the user asks you to perform maintenance tasks, use these commands:
+
+### "audit vulnerabilities" or "check security"
+Run `npm audit` to check for security vulnerabilities in dependencies. If vulnerabilities are found, suggest running `npm audit fix` to automatically fix them, or `npm audit fix --force` for breaking changes (with user confirmation).
+
+### "check outdated dependencies" or "update dependencies"
+Run `npm outdated` to see which packages have newer versions. Explain what can be safely updated. For updates, run `npm update` for patch/minor updates within semver ranges.
+
+### "run all tests" or "test everything"
+Run `npm test` to execute the full Vitest test suite. The project has 238 tests covering components, utilities, and contexts.
+
+### "build for production" or "create production build"
+Run `npm run build` to create an optimized production build. Check for any build errors or warnings.
+
+### "reset database" or "fresh database"
+Run `npm run db:reset` to reset the SQLite database. This will delete all data and re-run migrations. Always confirm with the user before running this.
+
+### "generate prisma client" or "update database schema"
+Run `npx prisma generate` after schema changes to regenerate the Prisma client in `src/generated/prisma`.
 
 ## Architecture
 

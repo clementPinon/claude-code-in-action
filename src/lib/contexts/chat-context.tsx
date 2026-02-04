@@ -101,7 +101,7 @@ export function ChatProvider({
     <ChatContext.Provider
       value={{
         messages,
-        input,
+        input: input ?? "",
         handleInputChange,
         handleSubmit,
         status,
